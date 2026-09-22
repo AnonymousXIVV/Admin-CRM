@@ -1,0 +1,321 @@
+/* Shared account-area layout (Profile, Settings, Notifications) */
+
+.account-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl, 16px);
+}
+
+.account-page-grid {
+  display: grid;
+  gap: var(--space-2xl, 16px);
+}
+
+.account-page-grid--cols-2 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .account-page-grid--cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.account-section {
+  padding: 0;
+  overflow: hidden;
+}
+
+.account-section__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--ui-border);
+}
+
+.account-section__title {
+  margin: 0;
+  font-size: var(--font-size-lg, 16px);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--ui-text-on-surface);
+}
+
+.account-section__subtitle {
+  margin: 4px 0 0;
+  font-size: var(--font-size-xs, 12px);
+  color: var(--ui-text-soft);
+}
+
+.account-section__body {
+  padding: 12px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.account-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--ui-input-bg);
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+}
+
+.account-row__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.account-row__label {
+  font-size: var(--font-size-sm, 13px);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--ui-text-on-surface);
+}
+
+.account-row__desc {
+  font-size: var(--font-size-xs, 12px);
+  color: var(--ui-text-soft);
+  margin-top: 2px;
+}
+
+.account-row__value {
+  font-size: var(--font-size-base, 14px);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--ui-text-on-surface);
+  margin-top: 4px;
+  word-break: break-word;
+}
+
+.account-row__action {
+  flex-shrink: 0;
+}
+
+.account-row__toggle {
+  flex-shrink: 0;
+}
+
+.ui-btn--sm {
+  min-height: 32px;
+  max-height: 36px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  flex: 0 0 auto;
+  border-radius: 8px;
+}
+
+.account-action-btn {
+  white-space: nowrap;
+}
+
+.account-page .btn-action:not(.btn-deposit):not(.btn-withdraw):not(.btn-convert) {
+  flex: 0 0 auto;
+  min-width: auto;
+  min-height: 32px;
+  max-height: 36px;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .account-row {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .account-row__action {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .account-row:has(.account-row__toggle) {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .account-row:has(.account-row__toggle) .account-row__action {
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .account-section__head {
+    flex-wrap: wrap;
+  }
+}
+
+/* Profile hero */
+.profile-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+}
+
+.profile-avatar-wrap {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.profile-avatar-wrap .profile-avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--ui-input-bg);
+  border: 2px solid var(--ui-border-strong);
+}
+
+.profile-avatar-edit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--ui-border-strong);
+  background: var(--ui-surface);
+  color: var(--ui-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.25));
+  transition: background 0.15s ease, color 0.15s ease;
+  font-size: 14px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.profile-avatar-edit i {
+  font-size: 14px !important;
+  width: 1em !important;
+  height: 1em !important;
+  line-height: 1em !important;
+  display: inline-block !important;
+  text-rendering: auto;
+}
+
+.profile-avatar-edit:hover {
+  background: var(--ui-surface-hover);
+  color: var(--ui-text-on-surface);
+}
+
+.profile-hero-name {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--ui-text-on-surface);
+  letter-spacing: -0.01em;
+}
+
+.profile-avatar-picker {
+  width: 100%;
+  max-width: 300px;
+  margin: 12px auto 0;
+}
+
+/* Phone field */
+.phone-field {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ui-input-bg);
+}
+
+.phone-field:focus-within {
+  border-color: var(--ui-accent);
+  box-shadow: 0 0 0 2px var(--ui-focus-ring);
+}
+
+.phone-field__prefix {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--ui-border);
+  background: var(--ui-surface-deep);
+  min-width: 96px;
+}
+
+.phone-field__prefix-display {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 28px 0 12px;
+  pointer-events: none;
+}
+
+.phone-field__flag {
+  border-radius: 2px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.phone-field__dial {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ui-text-on-surface);
+  white-space: nowrap;
+}
+
+.phone-field__chevron {
+  position: absolute;
+  right: 10px;
+  font-size: 10px;
+  color: var(--ui-text-muted);
+  pointer-events: none;
+}
+
+.phone-field__country-select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.phone-field__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 10px 14px;
+  font-size: 15px;
+  color: var(--ui-text-on-surface);
+  outline: none;
+}
+
+.phone-field__input::placeholder {
+  color: var(--ui-text-muted);
+}
+
+.phone-field--disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.phone-field--disabled .phone-field__input,
+.phone-field--disabled .phone-field__country-select {
+  cursor: not-allowed;
+}

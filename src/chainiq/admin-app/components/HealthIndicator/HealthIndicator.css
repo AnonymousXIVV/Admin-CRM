@@ -1,0 +1,91 @@
+.hi-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.hi-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 3px 10px;
+  cursor: pointer;
+  font-size: 11px;
+  color: #848E9C;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+  line-height: 1;
+}
+.hi-pill:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.18);
+  color: #C8CDDA;
+}
+.hi-loading {
+  cursor: default;
+}
+
+.hi-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.hi-dot-green  { background: #2ecc71; box-shadow: 0 0 5px #2ecc7180; animation: hi-pulse 2s infinite; }
+.hi-dot-yellow { background: #F0B90B; box-shadow: 0 0 5px #F0B90B80; }
+.hi-dot-red    { background: #e74c3c; box-shadow: 0 0 5px #e74c3c80; }
+.hi-dot-grey   { background: #444A55; }
+
+@keyframes hi-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+.hi-sep   { color: #444A55; }
+.hi-ms    { color: #6C7384; }
+.hi-label { font-size: 11px; }
+
+.hi-popup {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #1E2329;
+  border: 1px solid #2B3139;
+  border-radius: 10px;
+  padding: 14px 16px;
+  min-width: 200px;
+  z-index: 9999;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+}
+.hi-popup-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #848E9C;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+.hi-popup-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 12px;
+}
+.hi-popup-key   { color: #848E9C; }
+.hi-popup-val   { color: #C8CDDA; font-weight: 500; }
+.hi-popup-divider { height: 1px; background: #2B3139; margin: 6px 0; }
+.hi-popup-footer {
+  font-size: 10px;
+  color: #4B5563;
+  margin-top: 8px;
+  text-align: right;
+}
+
+.hi-green  { color: #2ecc71 !important; }
+.hi-yellow { color: #F0B90B !important; }
+.hi-red    { color: #e74c3c !important; }

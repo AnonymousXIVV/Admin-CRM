@@ -1,0 +1,201 @@
+/**
+ * Responsive layout - single source for mobile/tablet behavior.
+ * Avoid page-specific !important patches in App.css; extend tokens here.
+ */
+
+.dashboard-layout {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --modal-radius-mobile: 16px;
+  --modal-pad-mobile: 16px;
+  --modal-field-radius: 10px;
+  --modal-field-min-h: 44px;
+  --modal-title-mobile: 16px;
+  --modal-label-mobile: 12px;
+  --modal-input-mobile: 15px;
+  --support-mobile-height: calc(100dvh - var(--size-header-height-mobile) - 70px);
+}
+
+/* Android / WebView: match iOS text metrics and smoothing */
+@supports not (-webkit-touch-callout: none) {
+  .dashboard-layout {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  @media (max-width: 900px) {
+    .compact-action-btn,
+    .profile-change-btn,
+    .notifications-mark-read-btn {
+      font-size: 12px;
+      padding: 6px 12px;
+      min-height: 32px;
+      max-height: 36px;
+      line-height: 1.35;
+      border-radius: 8px;
+    }
+  }
+}
+
+/* ── Modals: tablet and phone ── */
+@media (max-width: 768px) {
+  .modal {
+    align-items: flex-end;
+    padding: 0;
+    padding-top: max(56px, calc(56px + env(safe-area-inset-top, 0px)));
+  }
+
+  .modal-content {
+    width: 100%;
+    max-width: 100%;
+    max-height: min(85dvh, calc(100dvh - env(safe-area-inset-top, 0px) - 56px));
+    border-radius: var(--modal-radius-mobile) var(--modal-radius-mobile) 0 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .modal-content.modal-sm {
+    max-height: min(60dvh, calc(100dvh - env(safe-area-inset-top, 0px) - 80px));
+  }
+
+  .modal-content.modal-lg,
+  .modal-content.modal-xl {
+    max-height: min(90dvh, calc(100dvh - env(safe-area-inset-top, 0px) - 48px));
+  }
+
+  .modal-content::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 4px;
+    background: var(--ui-border-strong);
+    border-radius: 2px;
+    margin: 10px auto 6px;
+    flex-shrink: 0;
+  }
+
+  .modal-header {
+    padding: 10px var(--modal-pad-mobile) 12px;
+    flex-shrink: 0;
+  }
+
+  .modal-title {
+    font-size: var(--modal-title-mobile);
+  }
+
+  .modal-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: var(--modal-pad-mobile);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  .modal-footer {
+    flex-shrink: 0;
+    padding: 12px var(--modal-pad-mobile);
+    padding-bottom: max(12px, calc(12px + env(safe-area-inset-bottom, 0px)));
+  }
+
+  .modal-content .form-group {
+    margin-bottom: 12px;
+  }
+
+  .modal-content .form-label {
+    font-size: var(--modal-label-mobile);
+    margin-bottom: 6px;
+  }
+
+  .modal-content .form-input,
+  .modal-content .form-select,
+  .modal-content .form-textarea,
+  .modal-content input:not([type='checkbox']):not([type='radio']),
+  .modal-content select,
+  .modal-content textarea {
+    font-size: var(--modal-input-mobile);
+    min-height: var(--modal-field-min-h);
+    border-radius: var(--modal-field-radius);
+    padding: 10px 12px;
+  }
+
+  .modal-content .flex.gap-3 {
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .modal-content .btn-submit-card,
+  .modal-content .btn-secondary {
+    min-height: 42px;
+    padding: 10px 14px;
+    font-size: 13px;
+    border-radius: var(--modal-field-radius);
+  }
+
+  /* Portal modals (iOS Safari): centered sheet, body scroll only */
+  .dashboard-modal-portal.modal {
+    align-items: center;
+    justify-content: center;
+    padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+      max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    overflow: hidden;
+  }
+
+  .dashboard-modal-portal .modal-content {
+    width: calc(100% - 16px);
+    max-width: 440px;
+    max-height: min(88dvh, calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px));
+    border-radius: 14px;
+    transform: none;
+  }
+
+  .dashboard-modal-portal .modal-content::before {
+    display: none;
+  }
+
+  .dashboard-modal-portal .modal-body {
+    touch-action: pan-y;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-modal-portal .modal-content {
+    width: calc(100% - 12px);
+    max-height: min(90dvh, calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px));
+  }
+}
+
+/* Square close control (no pill override) */
+.modal-close-btn,
+.dashboard-layout .modal-close-btn,
+.dashboard-modal-portal .modal-close-btn {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  max-width: 32px;
+  max-height: 32px;
+  padding: 0;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Header dropdowns on mobile */
+@media (max-width: 768px) {
+  .header-dropdown {
+    max-width: min(100vw - 24px, 320px);
+    border-radius: 12px;
+  }
+
+  .header-dropdown .dropdown-item {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}

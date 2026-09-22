@@ -1,0 +1,160 @@
+/**
+ * User UI theme tokens - values are injected on <html> by applyPlatformTheme.js.
+ * Static fallbacks below apply only before JS runs.
+ */
+
+:root {
+  --ui-bg: #0a0a0f;
+  --ui-surface: #1e2026;
+  --ui-surface-hover: #2b3139;
+  --ui-surface-deep: #0b0e11;
+  --ui-input-bg: #1e2329;
+  --ui-input-bg-hover: #2a313a;
+  --ui-border: #2b3139;
+  --ui-border-strong: #3a434f;
+  --ui-primary: #f0b90b;
+  --ui-primary-strong: #fcd535;
+  --ui-accent: #f0b90b;
+  --ui-accent-strong: #fcd535;
+  --ui-button: #f0b90b;
+  --ui-button-text: #0b0e11;
+  --ui-primary-text: #0b0e11;
+  --ui-on-accent: #0b0e11;
+  --ui-text: #f9fafb;
+  --ui-text-on-surface: #eaecef;
+  --ui-text-soft: #848e9c;
+  --ui-text-muted: #707a8a;
+  --ui-menu-text: #9098a4;
+  --ui-menu-text-hover: #eaecef;
+  --ui-focus-ring: rgba(240, 185, 11, 0.38);
+  --ui-accent-tint: rgba(240, 185, 11, 0.12);
+  --ui-accent-tint-strong: rgba(240, 185, 11, 0.45);
+  --ui-nav-active-bg: rgba(240, 185, 11, 0.12);
+  --ui-nav-active-text: #eaecef;
+  --ui-hover-overlay: rgba(255, 255, 255, 0.06);
+  --ui-overlay: rgba(0, 0, 0, 0.72);
+  --ui-surface-glass: rgba(30, 32, 38, 0.88);
+
+  --ciq-bg: var(--ui-bg);
+  --ciq-surface: var(--ui-surface);
+  --ciq-surface-hi: var(--ui-surface-hover);
+  --ciq-border: var(--ui-border);
+  --ciq-border-hi: var(--ui-border-strong);
+  --ciq-text: var(--ui-text-on-surface);
+  --ciq-text-soft: var(--ui-text-soft);
+  --ciq-accent: var(--ui-accent);
+}
+
+.user-ui-shell {
+  background-color: var(--ui-bg);
+  color: var(--ui-text);
+}
+
+.user-ui-shell a {
+  color: var(--ui-accent);
+}
+
+.user-ui-shell .ui-accent {
+  color: var(--ui-primary);
+}
+
+#landing-page-container .landing-nav-link {
+  color: var(--ui-text-soft);
+}
+
+#landing-page-container .landing-nav-link:hover {
+  color: var(--ui-text);
+}
+
+#landing-page-container .landing-muted {
+  color: var(--ui-text-muted);
+}
+
+#landing-page-container .landing-feature-icon {
+  background: color-mix(in srgb, var(--ui-primary) 13%, transparent);
+  color: var(--ui-primary);
+}
+
+#landing-page-container .landing-hero-art {
+  color: var(--ui-primary);
+}
+
+#landing-page-container .text-binance-yellow {
+  color: var(--ui-accent);
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: var(--ui-bg);
+  color: var(--ui-text);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: var(--shadow-xl);
+  color: var(--ui-text-on-surface);
+}
+
+.login-brand {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ui-primary);
+  margin-bottom: 4px;
+}
+
+.login-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  background: var(--ui-surface-deep);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.login-tab {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--ui-text-soft);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.login-tab.is-active {
+  background: var(--ui-button);
+  color: var(--ui-button-text);
+}
+
+.login-error {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-accent-red, #f6465d) 15%, transparent);
+  color: var(--color-accent-red, #f6465d);
+  border: 1px solid color-mix(in srgb, var(--color-accent-red, #f6465d) 30%, transparent);
+  font-size: 14px;
+}
+
+.login-footnote {
+  margin-top: 20px;
+  color: var(--ui-text-muted);
+  font-size: 0.875rem;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.text-text-secondary {
+  color: var(--ui-text-soft) !important;
+}

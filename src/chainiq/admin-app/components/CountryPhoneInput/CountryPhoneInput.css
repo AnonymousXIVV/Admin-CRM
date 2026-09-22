@@ -1,0 +1,291 @@
+/* ── CountryPhoneInput - consistent with admin inputStyle ── */
+
+.ciq-cp-trigger {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding: 9px 10px;
+  background: #363B44;
+  border: 1px solid #444A55;
+  border-radius: 8px;
+  color: #EAECEF;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  min-height: 40px;
+  transition: border-color 0.15s;
+  outline: none;
+}
+.ciq-cp-trigger:hover {
+  border-color: #555A64;
+}
+.ciq-cp-trigger.ciq-cp-open {
+  border-color: #F0B90B;
+}
+.ciq-cp-trigger:focus {
+  border-color: #F0B90B;
+}
+
+.ciq-cp-trigger-placeholder {
+  color: #707A8A;
+  flex: 1;
+  font-size: 14px;
+}
+
+.ciq-cp-trigger-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  color: #EAECEF;
+}
+
+.ciq-cp-trigger-dial {
+  font-size: 12px;
+  color: #848E9C;
+  flex-shrink: 0;
+}
+
+/* Small, unobtrusive clear button */
+.ciq-cp-trigger-clear {
+  color: #848E9C;
+  font-size: 11px;
+  line-height: 1;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #444A55;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  padding: 0;
+}
+.ciq-cp-trigger-clear:hover {
+  background: #555A64;
+  color: #EAECEF;
+}
+
+.ciq-cp-chevron {
+  flex-shrink: 0;
+  color: #848E9C;
+  transition: transform 0.18s;
+  margin-left: auto;
+}
+.ciq-cp-chevron.ciq-cp-open {
+  transform: rotate(180deg);
+  color: #EAECEF;
+}
+
+.ciq-cp-flag {
+  width: 18px;
+  height: 13px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+  display: block;
+}
+.ciq-cp-flag-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 13px;
+  background: #444A55;
+  border-radius: 2px;
+  font-size: 8px;
+  font-weight: 700;
+  color: #848E9C;
+  letter-spacing: -0.5px;
+  flex-shrink: 0;
+}
+
+/* ── Dropdown ── */
+.ciq-cp-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #2A2E36;
+  border: 1px solid #444A55;
+  border-radius: 8px;
+  z-index: 99999;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 280px;
+}
+.ciq-cp-dropdown-phone {
+  right: auto;
+  width: 260px;
+}
+
+.ciq-cp-search-wrap {
+  position: relative;
+  flex-shrink: 0;
+  border-bottom: 1px solid #363B44;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 7px;
+}
+.ciq-cp-search-icon {
+  color: #848E9C;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+.ciq-cp-search {
+  flex: 1;
+  padding: 9px 0;
+  background: transparent;
+  border: none;
+  color: #EAECEF;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
+}
+.ciq-cp-search::placeholder {
+  color: #707A8A;
+}
+
+.ciq-cp-list {
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #444A55 transparent;
+}
+
+.ciq-cp-empty {
+  padding: 14px 12px;
+  color: #848E9C;
+  font-size: 13px;
+  text-align: center;
+}
+
+.ciq-cp-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #EAECEF;
+  transition: background 0.1s;
+}
+.ciq-cp-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ciq-cp-row.ciq-cp-selected {
+  background: rgba(240, 185, 11, 0.1);
+  color: #F0B90B;
+}
+.ciq-cp-row-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ciq-cp-row-dial {
+  font-size: 12px;
+  color: #848E9C;
+  flex-shrink: 0;
+}
+.ciq-cp-row.ciq-cp-selected .ciq-cp-row-dial {
+  color: rgba(240, 185, 11, 0.65);
+}
+
+/* ── Phone input: single-line, compact ── */
+.ciq-phone-wrap {
+  display: flex;
+  width: 100%;
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid #444A55;
+  background: #363B44;
+  min-height: 40px;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+.ciq-phone-wrap:focus-within {
+  border-color: #F0B90B;
+}
+
+/* Left: flag + dial code - compact, not oversized */
+.ciq-phone-dial-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 8px 0 10px;
+  border-right: 1px solid #444A55;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  color: #EAECEF;
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
+  transition: background 0.15s;
+  font-size: 13px;
+  font-family: inherit;
+  background: transparent;
+}
+.ciq-phone-dial-btn:hover,
+.ciq-phone-dial-btn.ciq-cp-open {
+  background: #2E323A;
+}
+
+.ciq-phone-dial-code {
+  font-size: 13px;
+  color: #EAECEF;
+}
+.ciq-phone-dial-code.ciq-empty {
+  color: #707A8A;
+}
+
+/* Right: number input - override global admin input styles */
+.ciq-phone-wrap input.ciq-phone-number {
+  flex: 1;
+  padding: 0 10px;
+  background: transparent;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  color: #EAECEF;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: unset;
+  width: auto;
+  margin: 0;
+}
+.ciq-phone-wrap input.ciq-phone-number::placeholder {
+  color: #707A8A;
+}
+
+/* Search input inside dropdown - override global admin input styles */
+.ciq-cp-search-wrap input.ciq-cp-search {
+  flex: 1;
+  padding: 9px 0;
+  background: transparent;
+  border: none;
+  color: #EAECEF;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
+  min-height: unset;
+  width: auto;
+  margin: 0;
+}
+.ciq-cp-search-wrap input.ciq-cp-search::placeholder {
+  color: #707A8A;
+}

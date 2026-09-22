@@ -1,0 +1,411 @@
+/**
+ * Landing page phone mockup - self-contained “device preview look.
+ * Screen uses a fixed in-app dark palette so it stays legible on light AND dark landing themes.
+ */
+
+#landing-page-container .landing-phone {
+  position: relative;
+  width: 280px;
+  height: 580px;
+  margin-inline: auto;
+  filter: drop-shadow(0 28px 48px rgba(0, 0, 0, 0.45));
+}
+
+/* Ambient glow behind device */
+#landing-page-container .landing-phone::before {
+  content: '';
+  position: absolute;
+  inset: 8% 0 12%;
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 45%,
+    color-mix(in srgb, var(--ui-primary) 28%, transparent) 0%,
+    transparent 68%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+#landing-page-container .landing-phone-frame {
+  position: absolute;
+  inset: 0;
+  border-radius: 55px;
+  z-index: 1;
+  background: linear-gradient(
+    165deg,
+    #4a5160 0%,
+    #2a2f3a 18%,
+    #1a1e26 52%,
+    #12151c 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.35),
+    0 0 0 2px color-mix(in srgb, var(--ui-primary) 22%, transparent);
+}
+
+/* Side buttons (decorative) */
+#landing-page-container .landing-phone-frame::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: 28%;
+  width: 3px;
+  height: 52px;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(180deg, #3d4452, #252a34);
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
+#landing-page-container .landing-phone-screen {
+  position: absolute;
+  inset: 10px;
+  border-radius: 46px;
+  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 18px;
+  /* In-app preview - always rich dark (not page background) */
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -10%, rgba(240, 185, 11, 0.09) 0%, transparent 50%),
+    radial-gradient(ellipse 90% 60% at 80% 100%, rgba(56, 97, 180, 0.12) 0%, transparent 45%),
+    linear-gradient(180deg, #1c2230 0%, #12161f 42%, #0c0f14 100%);
+  color: #eaecef;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 1px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Status bar + Dynamic Island (iPhone-style) */
+#landing-page-container .landing-phone-top {
+  position: relative;
+  flex-shrink: 0;
+  height: 52px;
+  padding: 12px 22px 0;
+  z-index: 5;
+}
+
+#landing-page-container .landing-phone-dynamic-island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 102px;
+  height: 30px;
+  border-radius: 999px;
+  background: #000;
+  z-index: 6;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.07),
+    0 4px 12px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Sensors: Face ID cluster (left) + front camera (right) */
+#landing-page-container .landing-phone-dynamic-island::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 38%, #151820 0%, #000 72%);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.85);
+}
+
+#landing-page-container .landing-phone-island-camera {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 32%, #2a3a5c 0%, #0a0c10 45%, #000 100%);
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+#landing-page-container .landing-phone-status {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 22px;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(234, 236, 239, 0.9);
+}
+
+#landing-page-container .landing-phone-status-time {
+  min-width: 52px;
+  padding-left: 2px;
+}
+
+#landing-page-container .landing-phone-status-icons {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  min-width: 52px;
+  justify-content: flex-end;
+  font-size: 9px;
+  opacity: 0.9;
+  padding-right: 2px;
+}
+
+#landing-page-container .landing-phone-status-icons .fa-battery-full {
+  font-size: 10px;
+}
+
+#landing-page-container .landing-phone-content {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 4px 16px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#landing-page-container .landing-phone-hero-card {
+  position: relative;
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(38, 44, 58, 0.95) 0%, rgba(22, 26, 36, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 12px 28px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+#landing-page-container .landing-phone-hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--ui-primary) 35%,
+    var(--ui-primary-strong, #fcd535) 65%,
+    transparent 100%
+  );
+  opacity: 0.85;
+}
+
+#landing-page-container .landing-phone-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(132, 142, 156, 0.95);
+  margin: 0 0 6px;
+}
+
+#landing-page-container .landing-phone-value {
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #fff;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+#landing-page-container .landing-phone-change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  vertical-align: middle;
+  background: rgba(14, 203, 129, 0.15);
+  color: #3dd68c;
+  border: 1px solid rgba(14, 203, 129, 0.25);
+}
+
+#landing-page-container .landing-phone-change .fa-arrow-up {
+  font-size: 8px;
+}
+
+#landing-page-container .landing-phone-allocation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+#landing-page-container .landing-phone-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: #c5cad3;
+}
+
+#landing-page-container .landing-phone-chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+#landing-page-container .landing-phone-chip-dot--btc { background: #f7931a; }
+#landing-page-container .landing-phone-chip-dot--eth { background: #627eea; }
+#landing-page-container .landing-phone-chip-dot--sol { background: #9945ff; }
+
+#landing-page-container .landing-phone-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(132, 142, 156, 0.9);
+  margin: 18px 0 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+#landing-page-container .landing-phone-activity {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+#landing-page-container .landing-phone-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+#landing-page-container .landing-phone-row:last-child {
+  border-bottom: none;
+}
+
+#landing-page-container .landing-phone-up {
+  font-weight: 600;
+  color: #3dd68c;
+}
+
+#landing-page-container .landing-phone-down {
+  font-weight: 600;
+  color: #f66b7a;
+}
+
+#landing-page-container .landing-phone-row-time {
+  font-size: 10px;
+  color: rgba(112, 122, 138, 0.95);
+}
+
+#landing-page-container .landing-phone-nft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(45, 38, 62, 0.6) 0%, rgba(24, 22, 32, 0.85) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+#landing-page-container .landing-phone-nft-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2a2418 0%, #1a1610 100%);
+  border: 1px solid rgba(240, 185, 11, 0.35);
+  flex-shrink: 0;
+}
+
+#landing-page-container .landing-phone-nft-thumb img {
+  width: 28px;
+  height: 28px;
+}
+
+#landing-page-container .landing-phone-nft-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 2px;
+}
+
+#landing-page-container .landing-phone-nft-sub {
+  font-size: 11px;
+  color: rgba(132, 142, 156, 0.95);
+  margin: 0;
+}
+
+/* Light landing page: stronger device shadow, frame unchanged */
+html.user-theme-active[data-theme-mode='light'] #landing-page-container .landing-phone {
+  filter: drop-shadow(0 32px 56px rgba(15, 23, 42, 0.22));
+}
+
+html.user-theme-active[data-theme-mode='light'] #landing-page-container .landing-phone::before {
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 45%,
+    color-mix(in srgb, var(--ui-primary) 35%, transparent) 0%,
+    transparent 70%
+  );
+}
+
+html.user-theme-active[data-theme-mode='light'] #landing-page-container .landing-phone-frame {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 0 0 2px color-mix(in srgb, var(--ui-primary) 30%, transparent),
+    0 24px 40px rgba(15, 23, 42, 0.18);
+}
+
+/* Dark landing: slightly brighter rim glow */
+html.user-theme-active[data-theme-mode='dark'] #landing-page-container .landing-phone-frame {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.4),
+    0 0 0 2px color-mix(in srgb, var(--ui-primary) 18%, transparent),
+    0 28px 52px rgba(0, 0, 0, 0.55);
+}
+
+@media (max-width: 768px) {
+  #landing-page-container .landing-phone {
+    width: 252px;
+    height: 520px;
+  }
+
+  #landing-page-container .landing-phone-dynamic-island {
+    width: 92px;
+    height: 28px;
+    top: 10px;
+  }
+
+  #landing-page-container .landing-phone-top {
+    height: 48px;
+    padding: 10px 18px 0;
+  }
+}
